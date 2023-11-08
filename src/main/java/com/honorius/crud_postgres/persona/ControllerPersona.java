@@ -1,9 +1,8 @@
 package com.honorius.crud_postgres.persona;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -16,9 +15,18 @@ public class ControllerPersona {
     public ControllerPersona(ServicePersona servicePersona) {
         this.servicePersona = servicePersona;
     }
-
     @GetMapping
     public List<Persona> getPersonaList() {
         return servicePersona.getPersonaList();
+    }
+
+    @PostMapping
+    public ResponseEntity<Object> addPersona(@RequestBody Persona persona) {
+        return servicePersona.addPersona(persona);
+    }
+
+    @PutMapping
+    public ResponseEntity<Object> updatePersona(@RequestBody Persona persona) {
+        return servicePersona.updateProducto(persona);
     }
 }
