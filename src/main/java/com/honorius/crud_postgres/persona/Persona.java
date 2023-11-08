@@ -14,6 +14,7 @@ public class Persona {
     private Long id;
     private String nombre;
     private LocalDate fechaNacimiento;
+    @Transient
     private int edad;
 
     public Persona() {
