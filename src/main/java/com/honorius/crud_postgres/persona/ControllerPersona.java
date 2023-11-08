@@ -29,4 +29,9 @@ public class ControllerPersona {
     public ResponseEntity<Object> updatePersona(@RequestBody Persona persona) {
         return servicePersona.updateProducto(persona);
     }
+
+    @DeleteMapping(path = "{idPersona}")
+    public ResponseEntity<Object> deletePersona(@PathVariable("idPersona") Long idPersona) {
+        return this.servicePersona.deletePersona(idPersona);
+    }
 }

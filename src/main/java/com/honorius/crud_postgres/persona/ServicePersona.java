@@ -48,7 +48,18 @@ public class ServicePersona {
         }
         datos.put("ERROR", "No se pudo actualizar el registro de la persona");
         return new ResponseEntity<>(datos ,HttpStatus.CONFLICT);
+    }
 
-
+    public ResponseEntity<Object> deletePersona(Long idPersona) {
+        datos = new HashMap<>();
+        boolean exists = this.repositoryPersona.existsById(idPersona);
+        if (!exists) {
+            datos.put("ERROR", "No se puede eliminar los registros");
+            return new ResponseEntity<>(datos ,HttpStatus.CONFLICT);
+        }else {
+            repositoryPersona.deleteById(idPersona);
+            datos.put("ELIMINAR", "Los registros eliminados correctamente");
+            return new ResponseEntity<>(datos ,HttpStatus.ACCEPTED);
+        }
     }
 }
